@@ -17,37 +17,37 @@ public class PlayerMovement : MonoBehaviour
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         ThirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
         currentDestination= transform.position;
-   }
+    }
 
     // Fixed update is called in sync with physics
-    private void FixedUpdate()
-    {
-        ProcessMouseMovement(); 
-    }
+    // private void FixedUpdate()
+    // {
+    //     ProcessMouseMovement(); 
+    // }
 
-     private void ProcessMouseMovement()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            clickPoint = cameraRaycaster.hit.point;
-            print("Cursor raycast hit layer: " + cameraRaycaster.currentLayerHit);
-            switch (cameraRaycaster.currentLayerHit)
-            {
-                case Layer.Walkable:
-                    currentDestination = clickPoint;
-                    currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);
-                    break;
-                case Layer.Enemy:
-                    currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);
-                    break;
-                default:
-                    print("Unexpected layer found");
-                    return;
-            }
+    // private void ProcessMouseMovement()
+    // {
+    //     if (Input.GetMouseButton(0))
+    //     {
+    //         clickPoint = cameraRaycaster.hit.point;
+    //         print("Cursor raycast hit layer: " + cameraRaycaster.currentLayerHit);
+    //         switch (cameraRaycaster.currentLayerHit)
+    //         {
+    //             case Layer.Walkable:
+    //                 currentDestination = clickPoint;
+    //                 currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);
+    //                 break;
+    //             case Layer.Enemy:
+    //                 currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);
+    //                 break;
+    //             default:
+    //                 print("Unexpected layer found");
+    //                 return;
+    //         }
 
-        }
-        WalkToDestination();
-    }
+    //     }
+    //     WalkToDestination();
+    // }
 
     private void WalkToDestination()
     {
@@ -79,6 +79,4 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = new Color(255f, 0f, 0, .5f);
         Gizmos.DrawWireSphere(transform.position, attackMoveStopRadius);
     }
-
- }
-
+}

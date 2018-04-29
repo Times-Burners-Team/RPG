@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/SampleScenes/Sanbox.unity
+- path: Assets/Scenes/Sanbox.unity
   isLoaded: 1
   isActive: 1
